@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "atlassian-python-api>=4.0.7",
+    "pre-commit>=4.3.0",
+    "pydantic>=2.12.2",
+    "pydantic-settings>=2.11.0",
+    "pylint>=4.0.1",
+    "python-dotenv>=1.1.1",
+]
