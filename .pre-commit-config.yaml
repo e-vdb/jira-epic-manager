@@ -1,0 +1,47 @@
+repos:
+-   repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.9.1
+    hooks:
+      - id: uv-lock
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: requirements-txt-fixer
+      - id: check-json
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-yaml
+        args: [ --unsafe ]
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.2
+    hooks:
+      - id: ruff
+        args: ["--select", "ALL", "--extend-select", "B", "C", "--fix", "--ignore", "BLE001,E902"]
+-   repo: https://github.com/pycqa/pydocstyle
+    rev: '6.1.1'
+    hooks:
+    -   id: pydocstyle
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
+- repo: local
+  hooks:
+    - id: pylint
+      name: pylint
+      entry: uv run pylint
+      language: system
+      types: [ python ]
+      args:
+        [
+          "-rn", # Only display messages
+          "-sn", # Don't display the score
+        ]
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.2.0'
+    hooks:
+    -   id: mypy
+        additional_dependencies: ['types-requests', 'types-pyyaml']
