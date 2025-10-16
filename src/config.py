@@ -23,7 +23,7 @@ class Config(BaseSettings):
     jira_email: str
     jira_token: str
     jira_host: str
-    jira_id: str | None = None
+    jira_id: str
 
     @property
     def jira_url(self) -> str:
